@@ -60,22 +60,6 @@ class CreditServiceTest {
         Assertions.assertThat(actual).isSameAs(credit)
     }
 
-    /*@Test    MINHA VERSÃO(FUNCIONA)
-    fun `should create credit`(){
-        //give
-        val fakeCredit: Credit = buildCredit()
-        val fakeCustomer: Customer = buildCustomer()
-        every { creditRepository.save(fakeCredit) } returns fakeCredit
-        every { customerService.findById(fakeCredit.customer?.id!!) } returns fakeCustomer
-        //when
-        val actual: Credit = creditService.save(fakeCredit)
-        //then
-        Assertions.assertThat(actual).isNotNull
-        Assertions.assertThat(actual).isSameAs(fakeCredit)
-        verify (exactly = 1){ creditRepository.save(fakeCredit) }
-
-    }*/
-
     @Test
     fun `should not create credit when invalid day first installment`(){
         //given
@@ -171,46 +155,4 @@ class CreditServiceTest {
             customer = customer
         )
     }
-
-
-    /* MEU BUILDER (MEIO ALL OVER)
-    private fun buildCredit(
-        creditValue: BigDecimal = BigDecimal.valueOf(5000.0),
-        dayFirstInstallment: LocalDate = LocalDate.now().plusMonths(2),
-        numberOfInstallments: Int = 10,
-        customer: Customer = buildCustomer()
-
-    ) = Credit(
-        creditCode = UUID.randomUUID(),
-        creditValue = creditValue,
-        dayFirstInstallment = dayFirstInstallment,
-        numberOfInstallments = numberOfInstallments,
-        status = Status.IN_PROGRESS,
-        customer = customer,
-        id = 1L
-    )
-
-    private fun buildCustomer(
-        firstName: String = "Gil",
-        lastName: String = "teste",
-        cpf: String = "41412926807",
-        email: String = "email@teste.com",
-        password: String = "12345",
-        zipCode: String = "zip",
-        street: String = "rua",
-        income: BigDecimal = BigDecimal.valueOf(1000.0),
-        id: Long = 1L
-    ) = Customer(
-        firstName = firstName,
-        lastName = lastName,
-        cpf = cpf,
-        email = email,
-        password = password,
-        address = Address(
-            zipCode = zipCode,
-            street = street
-        ),
-        income = income,
-        id = id
-    )*/
 }
